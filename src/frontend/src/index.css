@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Aura Games Dark Navy Theme */
+    --background: 0.12 0.03 265;
+    --foreground: 0.97 0.01 255;
+    --card: 0.18 0.04 260;
+    --card-foreground: 0.97 0.01 255;
+    --popover: 0.15 0.035 260;
+    --popover-foreground: 0.97 0.01 255;
+    --primary: 0.82 0.15 195;
+    --primary-foreground: 0.12 0.03 265;
+    --secondary: 0.22 0.045 260;
+    --secondary-foreground: 0.97 0.01 255;
+    --muted: 0.22 0.045 260;
+    --muted-foreground: 0.68 0.04 255;
+    --accent: 0.58 0.22 290;
+    --accent-foreground: 0.97 0.01 255;
+    --destructive: 0.65 0.25 25;
+    --destructive-foreground: 0.97 0.01 255;
+    --border: 0.3 0.05 255;
+    --input: 0.22 0.045 260;
+    --ring: 0.82 0.15 195;
+    --chart-1: 0.82 0.15 195;
+    --chart-2: 0.62 0.2 255;
+    --chart-3: 0.58 0.22 290;
+    --chart-4: 0.65 0.25 330;
+    --chart-5: 0.85 0.17 80;
+    --sidebar: 0.15 0.035 260;
+    --sidebar-foreground: 0.97 0.01 255;
+    --sidebar-primary: 0.82 0.15 195;
+    --sidebar-primary-foreground: 0.12 0.03 265;
+    --sidebar-accent: 0.22 0.045 260;
+    --sidebar-accent-foreground: 0.97 0.01 255;
+    --sidebar-border: 0.3 0.05 255;
+    --sidebar-ring: 0.82 0.15 195;
+
+    /* Neon colors as direct CSS vars for glow effects */
+    --neon-cyan: #22d3ee;
+    --neon-blue: #3b82f6;
+    --neon-purple: #8b5cf6;
+    --neon-magenta: #ec4899;
+    --neon-yellow: #f5c84c;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background-image: radial-gradient(
+        ellipse 80% 50% at 20% 20%,
+        rgba(34, 211, 238, 0.06) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 80% 70%,
+        rgba(139, 92, 246, 0.08) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 40% 30% at 60% 10%,
+        rgba(236, 72, 153, 0.05) 0%,
+        transparent 50%
+      );
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .neon-text-cyan {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px rgba(34, 211, 238, 0.8), 0 0 40px
+      rgba(34, 211, 238, 0.4);
+  }
+
+  .neon-border-cyan {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.5), inset 0 0 8px
+      rgba(34, 211, 238, 0.1);
+  }
+
+  .neon-glow-btn {
+    background: linear-gradient(135deg, #22d3ee, #3b82f6, #8b5cf6, #ec4899);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.5), 0 0 40px
+      rgba(139, 92, 246, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .neon-glow-btn:hover {
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.7), 0 0 60px
+      rgba(139, 92, 246, 0.5), 0 0 80px rgba(236, 72, 153, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .glass-card {
+    background: rgba(20, 27, 46, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(42, 51, 80, 0.8);
+  }
+
+  .glass-card-hover:hover {
+    border-color: rgba(34, 211, 238, 0.3);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+  }
+
+  .hero-gradient-border {
+    position: relative;
+  }
+
+  .hero-gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #22d3ee, #3b82f6, #8b5cf6, #ec4899);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.5), 0 0 40px
+        rgba(139, 92, 246, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(34, 211, 238, 0.8), 0 0 60px
+        rgba(139, 92, 246, 0.5), 0 0 80px rgba(236, 72, 153, 0.3);
+    }
+  }
+
+  .logo-glow {
+    filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.8))
+      drop-shadow(0 0 12px rgba(139, 92, 246, 0.6));
+  }
+
+  .category-gradient-horror {
+    background: linear-gradient(135deg, #1a0a0a, #3d0404, #6b0a0a);
+  }
+  .category-gradient-racing {
+    background: linear-gradient(135deg, #0a1a3d, #042260, #0a3d6b);
+  }
+  .category-gradient-simulation {
+    background: linear-gradient(135deg, #0a2a1a, #04522a, #0a5540);
+  }
+  .category-gradient-escape {
+    background: linear-gradient(135deg, #1a1a0a, #3d3d04, #5a4a0a);
+  }
+  .category-gradient-parkour {
+    background: linear-gradient(135deg, #1a0a2a, #350452, #4a0a6b);
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(34, 211, 238, 0.3);
+    border-radius: 2px;
+  }
+}
